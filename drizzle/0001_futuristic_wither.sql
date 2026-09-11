@@ -1,1 +1,0 @@
-ALTER TABLE `tasks` ADD `deadline` text DEFAULT '' NOT NULL;
