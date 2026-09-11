@@ -1,2 +1,1 @@
-import {bucket,fail,viewer} from '@/lib/board-server';
-export async function GET(request:Request,{params}:{params:Promise<{id:string}>}){try{if(!await viewer(request))return fail('Please sign in.',401);const {id}=await params;if(!/^[a-f0-9-]{36}$/.test(id))return fail('Image not found.',404);const file=await bucket().get(id);if(!file)return fail('Image not found.',404);return new Response(file.body,{headers:{'Content-Type':file.httpMetadata?.contentType||'image/jpeg','Cache-Control':'private, max-age=3600','X-Content-Type-Options':'nosniff'}});}catch{return fail('Could not load the image.',503);}}
+export async function GET(){return Response.json({error:'Images are embedded in the board data.'},{status:404});}

@@ -1,17 +1,14 @@
-import { env } from 'cloudflare:workers';
+import { firebaseConfig } from './firebase-config';
 export const ROLES=['Modeller','Builder','Scripter','Animator','SFX artist','VFX artist'];
-export function database():D1Database { const db=(env as unknown as {DB:D1Database}).DB; if(!db) throw new Error('Storage unavailable');return db; }
-export function bucket():R2Bucket {return (env as unknown as {BUCKET:R2Bucket}).BUCKET;}
-export const hex=(b:ArrayBuffer)=>Array.from(new Uint8Array(b),x=>x.toString(16).padStart(2,'0')).join('');
-export async function digest(s:string){return hex(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s)));}
-export async function passwordHash(password:string,salt:string){const k=await crypto.subtle.importKey('raw',new TextEncoder().encode(password),'PBKDF2',false,['deriveBits']);return hex(await crypto.subtle.deriveBits({name:'PBKDF2',hash:'SHA-256',salt:new TextEncoder().encode(salt),iterations:100000},k,256));}
-export async function viewer(request:Request){const token=request.headers.get('cookie')?.match(/(?:^|;\s*)sf_session=([^;]+)/)?.[1];if(!token)return null;return database().prepare('SELECT u.id,u.username,u.about,u.avatar,u.scale,u.roles FROM users u JOIN sessions s ON s.user_id=u.id WHERE s.token=? AND s.expires>?').bind(await digest(token),Date.now()).first();}
+const root=`https://firestore.googleapis.com/v1/projects/${firebaseConfig.projectId}/databases/(default)/documents/standforge/board`;
 export function fail(message:string,status=400){return Response.json({error:message},{status});}
 export function clean(v:unknown,max=100){return typeof v==='string'?v.trim().slice(0,max):'';}
-export async function seed(){const db=database();await db.batch([
-db.prepare('INSERT OR IGNORE INTO categories (id,name) VALUES (?,?)').bind('part1','Part 1 Content'),
-db.prepare('INSERT OR IGNORE INTO categories (id,name) VALUES (?,?)').bind('part2','Part 2 Content'),
-...['Stands','Fighting Styles','Weapons'].map((n,i)=>db.prepare('INSERT OR IGNORE INTO channels (id,category_id,name) VALUES (?,?,?)').bind(['stands','styles','weapons'][i],'part1',n)),
-db.prepare('INSERT OR IGNORE INTO cards (id,channel_id,name,description,image,tags) VALUES (?,?,?,?,?,?)').bind('star-platinum','stands','Star Platinum','','','["Close range","Power"]'),
-db.prepare('INSERT OR IGNORE INTO task_groups (id,card_id,name) VALUES (?,?,?)').bind('heavy-punch','star-platinum','Heavy Punch'),
-...['Animation','SFX','VFX','Backend','Hitbox'].map((n,i)=>db.prepare('INSERT OR IGNORE INTO tasks (id,group_id,name,done) VALUES (?,?,?,?)').bind('heavy-'+i,'heavy-punch',n,i===3?1:0))]);}
+const val=(v:any):any=>v?.stringValue??(v?.integerValue!=null?Number(v.integerValue):v?.booleanValue??v?.doubleValue??(v?.arrayValue?(v.arrayValue.values||[]).map(val):v?.mapValue?Object.fromEntries(Object.entries(v.mapValue.fields||{}).map(([k,x])=>[k,val(x)])):null));
+const fv=(v:any):any=>typeof v==='string'?{stringValue:v}:typeof v==='number'?{integerValue:String(v)}:typeof v==='boolean'?{booleanValue:v}:Array.isArray(v)?{arrayValue:{values:v.map(fv)}}:{mapValue:{fields:Object.fromEntries(Object.entries(v||{}).map(([k,x])=>[k,fv(x)]))}};
+export function decode(token:string){try{return JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(token.split('.')[1].replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0))))}catch{return null}}
+export async function viewer(request:Request){const token=request.headers.get('cookie')?.match(/(?:^|;\s*)sf_token=([^;]+)/)?.[1];if(!token)return null;const x=decode(token);return x?{id:x.user_id||x.sub,username:(x.email||'member@').split('@')[0],token}:null;}
+export async function readBoard(){const r=await fetch(root);if(!r.ok)return null;const j:any=await r.json();return Object.fromEntries(Object.entries(j.fields||{}).map(([k,v])=>[k,val(v)]));}
+export async function writeBoard(board:any,token?:string){const fields=Object.fromEntries(Object.entries(board).map(([k,v])=>[k,fv(v)]));const r=await fetch(root,{method:'PATCH',headers:{'Content-Type':'application/json',...(token?{Authorization:`Bearer ${token}`}:{})},body:JSON.stringify({fields})});if(!r.ok)throw Error('Firestore write failed');}
+export const seedBoard=()=>({categories:[{id:'part1',name:'Part 1 Content'},{id:'part2',name:'Part 2 Content'}],channels:[{id:'stands',name:'Stands',category_id:'part1'},{id:'styles',name:'Fighting Styles',category_id:'part1'},{id:'weapons',name:'Weapons',category_id:'part1'}],cards:[{id:'star-platinum',channel_id:'stands',name:'Star Platinum',description:'',tags:['Close range','Power'],image:''}],groups:[{id:'heavy-punch',card_id:'star-platinum',name:'Heavy Punch'}],tasks:['Animation','SFX','VFX','Backend','Hitbox'].map((name,i)=>({id:'heavy-'+i,group_id:'heavy-punch',name,done:i===3?1:0,deadline:'',assignee:null})),comments:[],members:[]});
+export async function auth(action:string,username:string,password:string){const email=`${username}@peak-a81ad.firebaseapp.com`;const endpoint=action==='signup'?'accounts:signUp':'accounts:signInWithPassword';const r=await fetch(`https://identitytoolkit.googleapis.com/v1/${endpoint}?key=${firebaseConfig.apiKey}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password,returnSecureToken:true})});const j:any=await r.json();if(!r.ok)throw Error(action==='signup'?'This username may already be taken.':'Incorrect username or password.');return j;}
+
