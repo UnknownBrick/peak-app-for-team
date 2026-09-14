@@ -19,6 +19,7 @@
       <button class="view-btn active" data-view="values">Değerler</button>
       <button class="view-btn" data-view="calculator">Hesaplayıcı <span id="tradeCount" class="count">0</span></button>
       <button class="view-btn" data-view="meps">MEPS</button>
+      <button class="view-btn" data-view="builder">Tier Builder</button>
     </nav>
     <a class="source-pill" href="https://www.youtube.com/watch?v=Q0C1FSI3MeY" target="_blank" rel="noreferrer">Update 13 <span>•</span> Whole Cake Pt. 2 ↗</a>
   </header>
@@ -114,11 +115,17 @@
           <button id="addFruitButton" class="primary-btn">+ Yeni fruit</button>
         </div>
       </div>
-      <div class="meps-legend"><span><b>M</b> Moveset</span><span><b>E</b> Efficiency</span><span><b>P</b> PvP</span><span><b>S</b> Situational</span><small>Puanlar cihazında otomatik kaydedilir.</small></div>
+      <div class="meps-legend"><span><b>M</b> Murat</span><span><b>E</b> Ercan</span><span><b>P</b> Puanlama</span><span><b>S</b> Sistemi</span><small>Puanlar cihazında otomatik kaydedilir.</small></div>
       <div class="meps-shell">
         <div class="meps-table-head"><span>Fruit</span><span>Cooldowns</span><span>Damage</span><span>Range</span><span>Solo</span><span>Boss</span><span>Sea Beast</span><span>EOU</span><span></span></div>
         <div id="mepsList" class="meps-list"></div>
       </div>
+    </section>
+
+    <section id="builder" class="view" aria-labelledby="builderTitle">
+      <div class="section-head builder-heading"><div><p class="eyebrow">Kendi listeni kur</p><h1 id="builderTitle">Tier Builder.</h1></div><div class="builder-actions"><button id="newListButton" class="ghost-btn">+ Yeni liste</button><button id="addTierButton" class="ghost-btn">+ Tier ekle</button><label class="primary-btn upload-label">↑ Görsel yükle<input id="assetUpload" type="file" accept="image/*" multiple hidden></label></div></div>
+      <div id="listTabs" class="list-tabs"></div>
+      <div class="builder-layout"><aside class="asset-drawer"><div class="drawer-head"><div><p class="eyebrow">Görseller</p><strong>Havuz</strong></div><span id="assetCount" class="asset-count">0</span></div><p class="drawer-help">Görseli sürükleyip istediğin tier satırına bırak.</p><div id="assetPool" class="asset-pool"></div><div id="assetEmpty" class="asset-empty">Henüz görsel yok.<br><span>Yukarıdan yükle.</span></div></aside><div class="tier-canvas"><div class="list-title-row"><input id="activeListTitle" aria-label="Tier list başlığı" maxlength="70"><button id="deleteListButton" class="icon-btn" aria-label="Bu listeyi sil">×</button></div><div id="tierRows" class="tier-rows"></div><div class="canvas-tip">Bir görseli başka satıra bırakarak yerini değiştir. Aynı görseli birden fazla tier’da kullanabilirsin.</div></div></div>
     </section>
   </main>
 

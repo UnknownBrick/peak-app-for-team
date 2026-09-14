@@ -235,3 +235,32 @@ $('mepsList').addEventListener('change', (event) => { const select = event.targe
 $('fruitForm').addEventListener('submit', (event) => { event.preventDefault(); const name = $('newFruitName').value.trim(); if (!name) return; const data = new FormData(event.currentTarget); const fruit = { id: `custom-${Date.now()}`, name, custom: true }; mepsFields.forEach((field) => fruit[field] = data.get(field)); mepsItems.push(fruit); saveMeps(); renderMeps(); $('fruitDialog').close(); });
 document.addEventListener('keydown', (event) => { if (event.key === '/' && document.activeElement.tagName !== 'INPUT') { event.preventDefault(); switchView('values'); $('searchInput').focus(); } });
 setupPicker('give'); setupPicker('receive'); setupFruitDialog(); renderCategories(); renderList(); renderTrade(); renderMeps(); registerWebMCP();
+
+const tierSeed = () => ({ id: `list-${Date.now()}-${Math.random().toString(36).slice(2,6)}`, title: 'Yeni Tier List', assets: [], tiers: [{id:'s',label:'S',color:'#ff6b6b',items:[]},{id:'a',label:'A',color:'#ffb84d',items:[]},{id:'b',label:'B',color:'#ffd86b',items:[]},{id:'c',label:'C',color:'#7ed6a4',items:[]},{id:'d',label:'D',color:'#74b9ff',items:[]} ]});
+let tierLists = (() => { try { const s = JSON.parse(localStorage.getItem('gpo-tier-lists-v1')); return Array.isArray(s) && s.length ? s : [tierSeed()]; } catch { return [tierSeed()]; } })();
+let activeListId = tierLists[0].id;
+const activeList = () => tierLists.find((list) => list.id === activeListId) || tierLists[0];
+const saveTierLists = () => localStorage.setItem('gpo-tier-lists-v1', JSON.stringify(tierLists));
+const assetById = (list, id) => list.assets.find((asset) => asset.id === id);
+function renderTierBuilder() {
+  const list = activeList(); if (!list) return;
+  $('listTabs').innerHTML = tierLists.map((entry) => `<button class="list-tab ${entry.id === activeListId ? 'active' : ''}" data-list-id="${entry.id}">${entry.title}<small>${entry.assets.length}</small></button>`).join('');
+  $('activeListTitle').value = list.title; $('assetCount').textContent = list.assets.length; $('assetEmpty').hidden = list.assets.length > 0;
+  $('assetPool').innerHTML = list.assets.map((asset) => `<div class="asset-card" draggable="true" data-asset-id="${asset.id}"><img src="${asset.src}" alt="${asset.name}"><button data-remove-asset="${asset.id}" aria-label="Görseli sil">×</button></div>`).join('');
+  $('tierRows').innerHTML = list.tiers.map((tier) => `<div class="tier-row"><div class="tier-label" style="--tier-color:${tier.color}">${tier.label}</div><div class="tier-items" data-tier-id="${tier.id}">${tier.items.map((id) => { const asset = assetById(list,id); return asset ? `<div class="placed-asset" draggable="true" data-placed-asset="${asset.id}"><img src="${asset.src}" alt="${asset.name}"><button data-remove-placed="${asset.id}" aria-label="Tierdan çıkar">×</button></div>` : ''; }).join('')}</div></div>`).join('');
+}
+function removeAssetEverywhere(list, id) { list.assets = list.assets.filter((asset) => asset.id !== id); list.tiers.forEach((tier) => tier.items = tier.items.filter((itemId) => itemId !== id)); }
+function moveAsset(list, assetId, tierId) { list.tiers.forEach((tier) => tier.items = tier.items.filter((id) => id !== assetId)); const target = list.tiers.find((tier) => tier.id === tierId); if (target) target.items.push(assetId); saveTierLists(); renderTierBuilder(); }
+document.addEventListener('dragstart', (event) => { const source = event.target.closest('[data-asset-id],[data-placed-asset]'); if (source) event.dataTransfer.setData('text/plain', source.dataset.assetId || source.dataset.placedAsset); });
+document.addEventListener('dragover', (event) => { const target = event.target.closest('.tier-items'); if (target) { event.preventDefault(); target.classList.add('drag-over'); } });
+document.addEventListener('dragleave', (event) => { const target = event.target.closest('.tier-items'); if (target) target.classList.remove('drag-over'); });
+document.addEventListener('drop', (event) => { const target = event.target.closest('.tier-items'); if (!target) return; event.preventDefault(); target.classList.remove('drag-over'); const id = event.dataTransfer.getData('text/plain'); if (id) moveAsset(activeList(), id, target.dataset.tierId); });
+$('newListButton').addEventListener('click', () => { const list = tierSeed(); tierLists.push(list); activeListId = list.id; saveTierLists(); renderTierBuilder(); switchView('builder'); });
+$('addTierButton').addEventListener('click', () => { const label = prompt('Tier adı?','Yeni'); if (!label?.trim()) return; const list = activeList(); list.tiers.push({id:`tier-${Date.now()}`,label:label.trim().slice(0,8),color:'#74b9ff',items:[]}); saveTierLists(); renderTierBuilder(); });
+$('activeListTitle').addEventListener('change', (event) => { const title = event.target.value.trim(); if (title) { activeList().title = title; saveTierLists(); renderTierBuilder(); } });
+$('deleteListButton').addEventListener('click', () => { if (tierLists.length < 2) return; if (!confirm('Bu tier list silinsin mi?')) return; tierLists = tierLists.filter((list) => list.id !== activeListId); activeListId = tierLists[0].id; saveTierLists(); renderTierBuilder(); });
+$('listTabs').addEventListener('click', (event) => { const tab = event.target.closest('[data-list-id]'); if (tab) { activeListId = tab.dataset.listId; renderTierBuilder(); } });
+$('assetPool').addEventListener('click', (event) => { const remove = event.target.closest('[data-remove-asset]'); if (remove) { removeAssetEverywhere(activeList(), remove.dataset.removeAsset); saveTierLists(); renderTierBuilder(); } });
+$('tierRows').addEventListener('click', (event) => { const remove = event.target.closest('[data-remove-placed]'); if (remove) { const list = activeList(); list.tiers.forEach((tier) => tier.items = tier.items.filter((id) => id !== remove.dataset.removePlaced)); saveTierLists(); renderTierBuilder(); } });
+$('assetUpload').addEventListener('change', async (event) => { const list = activeList(); for (const file of event.target.files) { if (!file.type.startsWith('image/')) continue; const src = await new Promise((resolve) => { const reader = new FileReader(); reader.onload = () => resolve(reader.result); reader.readAsDataURL(file); }); list.assets.push({id:`asset-${Date.now()}-${Math.random().toString(36).slice(2,6)}`,name:file.name,src}); } saveTierLists(); renderTierBuilder(); event.target.value = ''; });
+renderTierBuilder();
