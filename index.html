@@ -1,12 +1,137 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Standforge</title><style>
-:root{color-scheme:dark;--bg:#202126;--panel:#29282f;--panel2:#25242b;--line:#403a48;--text:#eeeaf2;--muted:#aaa1b4;--accent:#a696fb;--good:#9bc8aa;--bad:#e4a0a8}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px Arial,sans-serif}button,input,textarea,select{font:inherit}button{cursor:pointer;border:0;background:none;color:inherit}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}.layout{display:grid;grid-template-columns:245px 1fr;min-height:100vh}.side{background:#25262d;border-right:1px solid #373740;padding:24px 15px;display:flex;flex-direction:column}.brand{display:flex;gap:10px;align-items:center;font-size:22px;font-weight:700;margin:0 8px 35px}.mark{display:grid;place-items:center;background:var(--accent);color:#251e3a;border-radius:9px;width:31px;height:33px}.label{font-size:11px;letter-spacing:1.5px;color:#a39aaa;margin:16px 8px 8px}.cat{margin-bottom:17px}.cathead{display:flex;justify-content:space-between;color:#bdb4c7;font-size:13px;padding:4px 8px}.channel{width:100%;text-align:left;padding:10px 11px;border-radius:6px;color:#b5adbf;display:flex;gap:8px;align-items:center}.channel.active,.channel:hover{background:#393447;color:#d8caff}.channel small{margin-left:auto;color:#948a9f}.sidefoot{margin-top:auto;border-top:1px solid #3b3944;padding-top:15px;display:flex;gap:8px;align-items:center}.main{min-width:0}.top{height:68px;border-bottom:1px solid #37373f;padding:0 34px;display:flex;align-items:center;justify-content:space-between}.top button{color:#b8adc1}.wrap{max-width:1220px;margin:auto;padding:42px 38px}.heading{display:flex;justify-content:space-between;align-items:end;margin-bottom:30px}.heading h1{margin:0;font-size:30px;font-weight:600}.heading p{margin:9px 0 0;color:var(--muted)}.primary{background:var(--accent);color:#292239;border-radius:6px;padding:11px 15px;font-weight:600}.progress{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:13px;margin-bottom:30px;max-width:540px}.bar{height:5px;background:#45404e;border-radius:9px;flex:1;overflow:hidden}.bar i{display:block;height:100%;background:var(--accent)}.toolbar{display:flex;justify-content:space-between;gap:14px;border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:22px}.search,.filter{border:1px solid #49434f;border-radius:6px;padding:8px 10px;background:#27262d;color:#ddd5e4}.search input{width:190px;border:0;background:transparent;outline:0;color:inherit}.cards{display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,1fr);gap:24px}.cardlist{display:grid;gap:14px;align-content:start}.card{background:var(--panel);border:1px solid #484150;border-radius:9px;text-align:left;overflow:hidden}.card.sel{border-color:#917daf}.cover{height:165px;display:grid;place-items:center;background:linear-gradient(135deg,#4a4052,#302d37);position:relative}.initials{font-size:68px;color:#bba9c6;opacity:.7;font-weight:700}.status{position:absolute;right:12px;top:12px;font-size:12px;background:#302b39;border-radius:20px;padding:5px 8px;color:#d5c5e7}.body{padding:18px}.title{display:flex;justify-content:space-between;align-items:center}.title h2{font-size:18px;margin:0}.tags{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}.tag{font-size:12px;padding:4px 8px;background:#3c3341;border-radius:4px;color:#d2bad7}.cardmeta{display:flex;justify-content:space-between;color:#aaa0b2;font-size:12px;margin-top:13px}.detail{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:23px;align-self:start}.detail h2{margin:0;font-size:25px}.detail p{color:#bdb3c5;line-height:1.6}.group{background:var(--panel2);border:1px solid #413947;border-radius:7px;margin-top:14px;overflow:hidden}.grouphead{display:flex;justify-content:space-between;padding:14px}.task{display:flex;align-items:center;gap:9px;border-top:1px solid #39323f;padding:10px 13px}.task span:nth-child(2){flex:1}.task.done span:nth-child(2){text-decoration:line-through;color:#9b92a2}.task button{color:#ac9ab8;font-size:12px}.comment-count{color:#b6a3ca!important}.deadline.overdue{color:var(--bad)}.add{width:100%;padding:12px;text-align:left;color:#baa6c9;border-top:1px solid #39323f}.empty{padding:35px;text-align:center;color:var(--muted)}.modal{position:fixed;inset:0;background:#0009;display:grid;place-items:center;padding:20px}.box{background:#2a2931;border:1px solid #574b61;border-radius:9px;padding:25px;width:min(480px,100%);max-height:90vh;overflow:auto}.box h2{margin-top:0}.form{display:grid;gap:15px}.form label{display:grid;gap:7px;color:#d0c5d8}.form input,.form textarea,.form select{background:#322e39;border:1px solid #62546c;border-radius:6px;padding:10px;color:inherit}.actions{display:flex;justify-content:flex-end;gap:10px}.outline{border:1px solid #665770;border-radius:6px;padding:9px 13px}.comments{display:grid;gap:10px;max-height:340px;overflow:auto}.comment{display:flex;gap:9px;background:#25242b;padding:10px;border-radius:6px}.comment small{color:#9b91a5;display:block}.comment p{margin:5px 0 0;color:#d1c6d7}.avatar{width:30px;height:30px;border-radius:50%;background:#554866;display:grid;place-items:center;overflow:hidden;color:#eee}.avatar img{width:100%;height:100%;object-fit:cover}.notice{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#3d3548;border:1px solid #746182;padding:10px 17px;border-radius:6px}.hidden{display:none!important}@media(max-width:900px){.layout{grid-template-columns:1fr}.side{display:none}.cards{grid-template-columns:1fr}.wrap{padding:28px 18px}.top{padding:0 18px}.heading{align-items:start;gap:15px}.heading h1{font-size:26px}.toolbar{flex-wrap:wrap}.search{flex:1}.search input{width:100%}}
-</style></head><body><div id="app"></div><script type="module">
-import{initializeApp}from'https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js';import{getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut,onAuthStateChanged}from'https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js';import{getFirestore,doc,getDoc,setDoc}from'https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js';
-const firebaseConfig={apiKey:'AIzaSyAXckxOjb3NG1hz3C1Sm1koYSc96hp_Cc0',authDomain:'peak-a81ad.firebaseapp.com',projectId:'peak-a81ad',storageBucket:'peak-a81ad.firebasestorage.app',messagingSenderId:'797430375462',appId:'1:797430375462:web:79bee3007b5802599732e7'};const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app),ref=doc(db,'standforge','board');
-const seed={categories:[{id:'part1',name:'Part 1 Content'},{id:'part2',name:'Part 2 Content'}],channels:[{id:'stands',category_id:'part1',name:'Stands'},{id:'styles',category_id:'part1',name:'Fighting Styles'},{id:'weapons',category_id:'part1',name:'Weapons'}],cards:[{id:'star',channel_id:'stands',name:'Star Platinum',description:'',tags:['Close range','Power'],image:''}],groups:[{id:'heavy',card_id:'star',name:'Heavy Punch'}],tasks:['Animation','SFX','VFX','Backend','Hitbox'].map((name,i)=>({id:'t'+i,group_id:'heavy',name,done:i===3,deadline:'',assignee:''})),comments:[],members:[]};let state={...seed},user=null,channel='stands',cardId='star',filter='all',query='';const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));const uid=()=>Math.random().toString(36).slice(2)+Date.now();const tasks=c=>state.tasks.filter(t=>state.groups.some(g=>g.id===t.group_id&&g.card_id===c));const pct=t=>t.length?Math.round(t.filter(x=>x.done).length/t.length*100):0;const date=s=>s?new Date(s+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric'}):'';
-async function load(){if(!user){render();return}const x=await getDoc(ref);if(x.exists())state={...seed,...x.data()};if(user&&!state.members.some(m=>m.id===user.uid)){state.members.push({id:user.uid,username:user.email.split('@')[0],about:'',avatar:'',scale:100,roles:[]});await save()}render()}async function save(){await setDoc(ref,state)}function avatar(m){return`<span class="avatar">${m?.avatar?`<img src="${esc(m.avatar)}">`:esc(m?.username?.slice(0,2).toUpperCase()||'?')}</span>`}function open(type,data={}){$('#modal').classList.remove('hidden');$('#modal').dataset.type=type;$('#modal').dataset.data=JSON.stringify(data);modal(type,data)}function close(){$('#modal').classList.add('hidden')}function modal(type,d){let body='';if(type==='auth')body=`<form class="form" id="authform"><label>Username<input name="u" required pattern="[a-zA-Z0-9_]{3,24}"></label><label>Password<input name="p" type="password" required minlength="8"></label><button class="primary">${d.login?'Sign in':'Create account'}</button><button type="button" class="outline" id="swap">${d.login?'Create account':'Already have an account? Sign in'}</button></form>`;if(type==='comments'){const cs=state.comments.filter(c=>c.task_id===d.id).sort((a,b)=>a.created_at-b.created_at);body=`<div class="comments">${cs.map(c=>{const m=state.members.find(x=>x.id===c.user_id);return`<div class="comment">${avatar(m)}<div><strong>${esc(m?.username||'Member')}</strong><small>${new Date(c.created_at).toLocaleString()}</small><p>${esc(c.body)}</p></div></div>`}).join('')||'<div class="empty">No comments yet.</div>'}</div><form class="form" id="commentform"><textarea name="body" required maxlength="2000" placeholder="Write a comment…"></textarea><button class="primary">Send</button></form>`}if(type==='profile'){const m=state.members.find(x=>x.id===user.uid)||{};body=`<form class="form" id="profileform"><label>Avatar URL<input name="avatar" value="${esc(m.avatar)}"></label><label>Zoom (%)<input name="scale" type="number" min="100" max="300" value="${m.scale||100}"></label><label>About me<textarea name="about" maxlength="1000">${esc(m.about)}</textarea></label><label>Roles<select name="roles" multiple>${['Modeller','Builder','Scripter','Animator','SFX artist','VFX artist'].map(r=>`<option ${m.roles?.includes(r)?'selected':''}>${r}</option>`).join('')}</select></label><button class="primary">Save profile</button></form>`}if(type==='deadline')body=`<form class="form" id="deadlineform"><label>Due date<input name="date" type="date" value="${d.deadline||''}"></label><div class="actions"><button type="button" class="outline" id="removedate">Remove date</button><button class="primary">Save date</button></div></form>`;if(type==='card')body=`<form class="form" id="cardform"><label>Card name<input name="name" required value="${esc(d.name)}"></label><label>Description<textarea name="description">${esc(d.description)}</textarea></label><label>Tags<input name="tags" value="${esc((d.tags||[]).join(', '))}"></label><button class="primary">Save card</button></form>`;if(type==='newtask')body=`<form class="form" id="newtaskform"><label>Task name<input name="name" required></label><button class="primary">Add task</button></form>`;if(type==='newgroup')body=`<form class="form" id="newgroupform"><label>Checklist name<input name="name" required></label><label><input type="checkbox" name="template"> Add Animation, SFX, VFX, Backend</label><button class="primary">Create checklist</button></form>`;$('#box').innerHTML=`<h2>${type==='auth'?(d.login?'Sign in':'Create account'):type==='comments'?'Comments':type==='profile'?'Edit profile':type==='deadline'?'Due date':type==='card'?(d.id?'Edit card':'New card'):type==='newtask'?'New task':'New checklist'}</h2>${body}`;$('#swap')?.addEventListener('click',()=>{d.login=!d.login;modal(type,d)});wire(type,d)}
-function wire(type,d){$('#authform')?.addEventListener('submit',async e=>{e.preventDefault();const f=new FormData(e.target),u=String(f.get('u')).toLowerCase(),p=f.get('p'),em=u+'@peak-a81ad.firebaseapp.com';try{if(d.login)await signInWithEmailAndPassword(auth,em,p);else await createUserWithEmailAndPassword(auth,em,p);close()}catch{alert('Username or password is invalid.')}});$('#commentform')?.addEventListener('submit',async e=>{e.preventDefault();const f=new FormData(e.target);state.comments.push({id:uid(),task_id:d.id,user_id:user.uid,body:f.get('body'),created_at:Date.now()});await save();close();render()});$('#profileform')?.addEventListener('submit',async e=>{e.preventDefault();const f=new FormData(e.target),m=state.members.find(x=>x.id===user.uid);m.avatar=f.get('avatar');m.about=f.get('about');m.scale=Number(f.get('scale'))||100;m.roles=f.getAll('roles');await save();close();render()});$('#deadlineform')?.addEventListener('submit',async e=>{e.preventDefault();state.tasks.find(x=>x.id===d.id).deadline=new FormData(e.target).get('date');await save();close();render()});$('#removedate')?.addEventListener('click',async()=>{state.tasks.find(x=>x.id===d.id).deadline='';await save();close();render()});$('#cardform')?.addEventListener('submit',async e=>{e.preventDefault();const f=new FormData(e.target),c=d.id?state.cards.find(x=>x.id===d.id):{id:uid(),channel_id:channel};Object.assign(c,{name:f.get('name'),description:f.get('description'),tags:String(f.get('tags')).split(',').map(x=>x.trim()).filter(Boolean),image:c.image||''});if(!d.id)state.cards.push(c);await save();close();render()});$('#newtaskform')?.addEventListener('submit',async e=>{e.preventDefault();state.tasks.push({id:uid(),group_id:d.id,name:new FormData(e.target).get('name'),done:false,deadline:'',assignee:''});await save();close();render()});$('#newgroupform')?.addEventListener('submit',async e=>{e.preventDefault();const f=new FormData(e.target),g={id:uid(),card_id:d.id,name:f.get('name')};state.groups.push(g);if(f.get('template'))['Animation','SFX','VFX','Backend'].forEach(n=>state.tasks.push({id:uid(),group_id:g.id,name:n,done:false,deadline:'',assignee:''}));await save();close();render()})}
-function render(){const cat=state.channels.find(x=>x.id===channel)?.category_id,cs=state.cards.filter(c=>c.channel_id===channel&&(c.name+' '+(c.tags||[]).join(' ')).toLowerCase().includes(query.toLowerCase())).filter(c=>filter==='all'||(filter==='done'&&pct(tasks(c.id))===100)||(filter==='active'&&pct(tasks(c.id))<100));const c=cs.find(x=>x.id===cardId)||cs[0];cardId=c?.id||'';const ts=c?tasks(c.id):[];$('#app').innerHTML=`<div class="layout"><aside class="side"><div class="brand"><span class="mark">◇</span>standforge</div><div class="label catlabel">CATEGORIES <button id="newcategory">+</button></div>${state.categories.map(x=>`<div class="cat"><div class="cathead"><span>${esc(x.name)}</span><span><button class="mini" data-newchannel="${x.id}">+</button><button class="mini danger" data-deletecategory="${x.id}">×</button></span></div>${state.channels.filter(ch=>ch.category_id===x.id).map(ch=>`<button class="channel ${ch.id===channel?'active':''}" data-channel="${ch.id}"># ${esc(ch.name)}<small>${state.cards.filter(k=>k.channel_id===ch.id).length}</small></button>`).join('')}</div>`).join('')}<button class="channel" id="newcard">+ New card</button><div class="sidefoot">${user?avatar(state.members.find(m=>m.id===user.uid)):' '}<button id="profile">${user?'Edit profile':'Sign in'}</button></div></aside><main class="main"><header class="top"><span>${esc(state.categories.find(x=>x.id===cat)?.name||'')}</span><div>${user?`<button id="logout">Sign out</button>`:`<button id="signin">Sign in</button>`}</div></header><div class="wrap"><div class="heading"><div><h1># ${esc(state.channels.find(x=>x.id===channel)?.name||'')}</h1></div><button class="primary" id="newcard2">+ New card</button></div><div class="progress"><span>Channel progress</span><div class="bar"><i style="width:${pct(state.cards.filter(x=>x.channel_id===channel).flatMap(x=>tasks(x.id)))}%"></i></div><strong>${pct(state.cards.filter(x=>x.channel_id===channel).flatMap(x=>tasks(x.id)))}%</strong></div><div class="toolbar"><strong>Cards (${cs.length})</strong><div><input class="search" id="search" placeholder="Search cards…" value="${esc(query)}"><select class="filter" id="filter"><option value="all">All cards</option><option value="active">In progress</option><option value="done">Completed</option></select></div></div><div class="cards"><div class="cardlist">${cs.map(k=>`<button class="card ${k.id===cardId?'sel':''}" data-card="${k.id}"><div class="cover"><span class="initials">${esc(k.name.split(' ').map(x=>x[0]).join('').slice(0,3))}</span><span class="status">${pct(tasks(k.id))===100?'Done':'In progress'}</span></div><div class="body"><div class="title"><h2>${esc(k.name)}</h2><span>${pct(tasks(k.id))}%</span></div><div class="tags">${(k.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div><div class="bar"><i style="width:${pct(tasks(k.id))}%"></i></div><div class="cardmeta"><span>${tasks(k.id).filter(t=>t.done).length}/${tasks(k.id).length} tasks</span></div></div></button>`).join('')||'<div class="empty">No cards yet.</div>'}<button class="outline" id="newcard3">+ Create a card</button></div>${c?`<section class="detail"><div class="detail-head"><h2>${esc(c.name)}</h2><button class="delete-card" id="deletecard">Delete card</button></div><p>${esc(c.description)}</p><div class="progress"><span>Progress</span><div class="bar"><i style="width:${pct(ts)}%"></i></div><strong>${pct(ts)}%</strong></div><div class="actions"><strong>Checklist</strong><button class="outline" id="newgroup">+ Add list</button></div>${state.groups.filter(g=>g.card_id===c.id).map(g=>{const gt=state.tasks.filter(t=>t.group_id===g.id);return`<div class="group"><div class="grouphead"><strong>${esc(g.name)}</strong><span>${pct(gt)}%</span></div>${gt.map(t=>`<div class="task ${t.done?'done':''}"><input type="checkbox" ${t.done?'checked':''} data-toggle="${t.id}"><span>${esc(t.name)}</span>${t.deadline?`<button class="deadline ${new Date(t.deadline)<new Date()&&!t.done?'overdue':''}" data-deadline="${t.id}">${date(t.deadline)}</button>`:`<button data-deadline="${t.id}">+ date</button>`}<button class="comment-count" data-comments="${t.id}">Comments (${state.comments.filter(x=>x.task_id===t.id).length})</button></div>`).join('')}<button class="add" data-newtask="${g.id}">+ Add task</button></div>`}).join('')||'<div class="empty">No checklists yet.</div>'}</section>`:'<div class="empty">Select a card.</div>'}</div></div></main></div><div id="modal" class="modal hidden"><div class="box" id="box"></div></div><div id="notice" class="notice hidden">Saved</div>`;document.querySelectorAll('[data-channel]').forEach(b=>b.onclick=()=>{channel=b.dataset.channel;render()});$('#newcategory')?.addEventListener('click',async()=>{const name=prompt('Category name');if(!name?.trim())return;state.categories.push({id:uid(),name:name.trim()});await save();render()});document.querySelectorAll('[data-newchannel]').forEach(b=>b.onclick=async e=>{e.stopPropagation();const name=prompt('Channel name');if(!name?.trim())return;state.channels.push({id:uid(),category_id:b.dataset.newchannel,name:name.trim()});await save();render()});document.querySelectorAll('[data-deletecategory]').forEach(b=>b.onclick=async e=>{e.stopPropagation();const id=b.dataset.deletecategory;if(!confirm('Delete this category and everything inside it?'))return;const ch=state.channels.filter(x=>x.category_id===id).map(x=>x.id),cards=state.cards.filter(x=>ch.includes(x.channel_id)).map(x=>x.id),groups=state.groups.filter(x=>cards.includes(x.card_id)).map(x=>x.id);state.categories=state.categories.filter(x=>x.id!==id);state.channels=state.channels.filter(x=>x.category_id!==id);state.cards=state.cards.filter(x=>!cards.includes(x.id));state.groups=state.groups.filter(x=>!groups.includes(x.id));state.tasks=state.tasks.filter(x=>!groups.includes(x.group_id));state.comments=[];if(!state.channels.some(x=>x.id===channel))channel=state.channels[0]?.id||'';await save();render()});document.querySelectorAll('[data-card]').forEach(b=>b.onclick=()=>{cardId=b.dataset.card;render()});$('#search').oninput=e=>{query=e.target.value;render()};$('#filter').onchange=e=>{filter=e.target.value;render()};$('#signin')?.addEventListener('click',()=>open('auth',{login:true}));$('#profile')?.addEventListener('click',()=>user?open('profile'):open('auth',{login:true}));$('#logout')?.addEventListener('click',()=>signOut(auth));['#newcard','#newcard2','#newcard3'].forEach(id=>$(id)?.addEventListener('click',()=>open('card',{channel_id:channel})));$('#newgroup')?.addEventListener('click',()=>open('newgroup',{id:c?.id}));$('#deletecard')?.addEventListener('click',async()=>{if(!confirm('Delete this card and its tasks?'))return;const gids=state.groups.filter(g=>g.card_id===c.id).map(g=>g.id);state.cards=state.cards.filter(x=>x.id!==c.id);state.groups=state.groups.filter(g=>g.card_id!==c.id);state.tasks=state.tasks.filter(t=>!gids.includes(t.group_id));state.comments=state.comments.filter(x=>!state.tasks.some(t=>t.id===x.task_id));await save();cardId='';render()});document.querySelectorAll('[data-newtask]').forEach(b=>b.onclick=()=>open('newtask',{id:b.dataset.newtask}));document.querySelectorAll('[data-toggle]').forEach(x=>x.onchange=async()=>{state.tasks.find(t=>t.id===x.dataset.toggle).done=x.checked;await save();render()});document.querySelectorAll('[data-deadline]').forEach(x=>x.onclick=()=>open('deadline',{id:x.dataset.deadline,deadline:state.tasks.find(t=>t.id===x.dataset.deadline).deadline}));document.querySelectorAll('[data-comments]').forEach(x=>x.onclick=()=>open('comments',{id:x.dataset.comments}));$('#modal').onclick=e=>{if(e.target.id==='modal')close()}}
-onAuthStateChanged(auth,async u=>{user=u;await load()});
-</script></body></html>
-<style>.detail-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.delete-card{font-size:12px;color:#e4a0a8;border:1px solid #68464e;border-radius:5px;padding:7px 9px}.delete-card:hover{background:#4a2c35}</style><style>.catlabel{display:flex;justify-content:space-between;align-items:center}.catlabel button,.mini{color:#bca9c8;font-size:16px}.cathead span:last-child{display:flex;gap:3px}.mini{font-size:14px;padding:1px 3px}.mini.danger{color:#d6929e}</style>
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="GPO eşya değerlerini incele, filtrele ve trade dengesini anında hesapla.">
+  <meta name="theme-color" content="#0b0d10">
+  <title>GPO Trade Values</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%230b0d10'/%3E%3Cpath d='M15 21h34M20 21l-7 8m31-8 7 8M20 43h24M25 43l-7-8m21 8 7-8' stroke='%233d8bff' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#values" aria-label="GPO Trade Values ana sayfa">
+      <span class="brand-mark">GV</span>
+      <span>GPO <b>Trade Values</b></span>
+    </a>
+    <nav class="view-switch" aria-label="Görünüm seçimi">
+      <button class="view-btn active" data-view="values">Değerler</button>
+      <button class="view-btn" data-view="calculator">Hesaplayıcı <span id="tradeCount" class="count">0</span></button>
+      <button class="view-btn" data-view="meps">MEPS</button>
+    </nav>
+    <a class="source-pill" href="https://www.youtube.com/watch?v=Q0C1FSI3MeY" target="_blank" rel="noreferrer">Update 13 <span>•</span> Whole Cake Pt. 2 ↗</a>
+  </header>
+
+  <main>
+    <section id="values" class="view active" aria-labelledby="valuesTitle">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Güncel liste</p>
+          <h1 id="valuesTitle">Değeri bul. Trade’i tart.</h1>
+        </div>
+        <div class="quick-stat"><strong id="itemCount">0</strong><span>eşya</span></div>
+      </div>
+
+      <div class="toolbar">
+        <label class="search-field">
+          <span aria-hidden="true">⌕</span>
+          <input id="searchInput" type="search" placeholder="Eşya ara…" autocomplete="off">
+          <kbd>/</kbd>
+        </label>
+        <label class="sort-field">
+          <span>Sırala</span>
+          <select id="sortSelect">
+            <option value="value-desc">Değer: yüksekten</option>
+            <option value="value-asc">Değer: düşükten</option>
+            <option value="name-asc">İsim: A–Z</option>
+            <option value="demand-desc">Talep: yüksekten</option>
+          </select>
+        </label>
+      </div>
+
+      <div id="categoryFilters" class="category-row" aria-label="Kategori filtreleri"></div>
+
+      <div class="table-shell">
+        <div class="table-head" aria-hidden="true"><span>Eşya</span><span>Kategori</span><span>Talep</span><span>Değer</span><span></span></div>
+        <div id="itemList" class="item-list"></div>
+        <div id="emptyState" class="empty-state" hidden>
+          <span>⌕</span><strong>Sonuç bulunamadı</strong><p>Aramayı veya kategori filtresini değiştir.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="calculator" class="view" aria-labelledby="calculatorTitle">
+      <div class="section-head calc-heading">
+        <div>
+          <p class="eyebrow">Trade hesaplayıcı</p>
+          <h1 id="calculatorTitle">İki tarafı anında karşılaştır.</h1>
+        </div>
+        <button id="clearTrade" class="ghost-btn">Tümünü temizle</button>
+      </div>
+
+      <div class="trade-grid">
+        <article class="trade-side give-side">
+          <div class="side-title"><span class="side-dot"></span><div><p>Sen veriyorsun</p><strong id="giveTotal">0</strong></div></div>
+          <div class="picker-wrap">
+            <input id="giveSearch" class="item-picker" placeholder="Eşya ekle…" autocomplete="off" aria-label="Verilecek eşya ekle">
+            <div id="giveResults" class="picker-results" hidden></div>
+          </div>
+          <div id="giveItems" class="trade-items"></div>
+          <div id="giveEmpty" class="trade-empty">Arayıp eşya ekle</div>
+        </article>
+
+        <div class="balance-card" aria-live="polite">
+          <div id="balanceIcon" class="balance-icon">=</div>
+          <p id="balanceLabel">Henüz trade yok</p>
+          <strong id="balanceValue">0 fark</strong>
+          <div class="balance-track"><span id="balanceBar"></span></div>
+          <small id="balanceHint">İki tarafa da eşya ekleyerek başla.</small>
+        </div>
+
+        <article class="trade-side receive-side">
+          <div class="side-title"><span class="side-dot"></span><div><p>Sen alıyorsun</p><strong id="receiveTotal">0</strong></div></div>
+          <div class="picker-wrap">
+            <input id="receiveSearch" class="item-picker" placeholder="Eşya ekle…" autocomplete="off" aria-label="Alınacak eşya ekle">
+            <div id="receiveResults" class="picker-results" hidden></div>
+          </div>
+          <div id="receiveItems" class="trade-items"></div>
+          <div id="receiveEmpty" class="trade-empty">Arayıp eşya ekle</div>
+        </article>
+      </div>
+      <p class="disclaimer">Değerler topluluk listesinden alınmıştır; range değerlerde orta nokta kullanılır. Talep ve piyasa koşulları sonucu değiştirebilir.</p>
+    </section>
+
+    <section id="meps" class="view" aria-labelledby="mepsTitle">
+      <div class="section-head meps-heading">
+        <div>
+          <p class="eyebrow">Fruit performansı</p>
+          <h1 id="mepsTitle">MEPS tier list.</h1>
+        </div>
+        <div class="meps-actions">
+          <button id="resetMeps" class="ghost-btn">Varsayılana dön</button>
+          <button id="toggleMepsEdit" class="ghost-btn">Puanları düzenle</button>
+          <button id="addFruitButton" class="primary-btn">+ Yeni fruit</button>
+        </div>
+      </div>
+      <div class="meps-legend"><span><b>M</b> Moveset</span><span><b>E</b> Efficiency</span><span><b>P</b> PvP</span><span><b>S</b> Situational</span><small>Puanlar cihazında otomatik kaydedilir.</small></div>
+      <div class="meps-shell">
+        <div class="meps-table-head"><span>Fruit</span><span>Cooldowns</span><span>Damage</span><span>Range</span><span>Solo</span><span>Boss</span><span>Sea Beast</span><span>EOU</span><span></span></div>
+        <div id="mepsList" class="meps-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="fruitDialog" class="fruit-dialog">
+    <form id="fruitForm" method="dialog">
+      <div class="dialog-head"><div><p class="eyebrow">MEPS</p><h2>Yeni fruit ekle</h2></div><button type="button" class="dialog-close" data-close-dialog aria-label="Kapat">×</button></div>
+      <label class="fruit-name-label">Fruit adı<input id="newFruitName" required maxlength="40" placeholder="Örn. Tori"></label>
+      <div id="newFruitGrades" class="new-fruit-grades"></div>
+      <div class="dialog-actions"><button type="button" class="ghost-btn" data-close-dialog>Vazgeç</button><button id="saveFruit" class="primary-btn" value="default">Fruit’i ekle</button></div>
+    </form>
+  </dialog>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
