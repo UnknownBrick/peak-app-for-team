@@ -3,8 +3,8 @@ window.GPO_ITEMS = [
     "id": 1,
     "name": "Ito",
     "category": "Fruits",
-    "value": 40,
-    "rawValue": "40",
+    "value": 100,
+    "rawValue": "100",
     "note": "—",
     "demand": null
   },
@@ -21,8 +21,8 @@ window.GPO_ITEMS = [
     "id": 3,
     "name": "Kage",
     "category": "Fruits",
-    "value": 40,
-    "rawValue": "40",
+    "value": 100,
+    "rawValue": "100",
     "note": "—",
     "demand": null
   },
@@ -39,8 +39,8 @@ window.GPO_ITEMS = [
     "id": 5,
     "name": "Goro",
     "category": "Fruits",
-    "value": 200,
-    "rawValue": "200",
+    "value": 150,
+    "rawValue": "150",
     "note": "—",
     "demand": null
   },
@@ -48,8 +48,8 @@ window.GPO_ITEMS = [
     "id": 6,
     "name": "Yami",
     "category": "Fruits",
-    "value": 40,
-    "rawValue": "40",
+    "value": 100,
+    "rawValue": "100",
     "note": "—",
     "demand": null
   },
@@ -57,8 +57,8 @@ window.GPO_ITEMS = [
     "id": 7,
     "name": "Zushi",
     "category": "Fruits",
-    "value": 75,
-    "rawValue": "75",
+    "value": 100,
+    "rawValue": "100",
     "note": "—",
     "demand": null
   },
@@ -66,8 +66,8 @@ window.GPO_ITEMS = [
     "id": 8,
     "name": "Hie",
     "category": "Fruits",
-    "value": 75,
-    "rawValue": "75",
+    "value": 200,
+    "rawValue": "200",
     "note": "—",
     "demand": null
   },
@@ -84,8 +84,8 @@ window.GPO_ITEMS = [
     "id": 10,
     "name": "Yuki",
     "category": "Fruits",
-    "value": 50,
-    "rawValue": "50",
+    "value": 100,
+    "rawValue": "100",
     "note": "—",
     "demand": null
   },
@@ -93,8 +93,8 @@ window.GPO_ITEMS = [
     "id": 11,
     "name": "Mera",
     "category": "Fruits",
-    "value": 100,
-    "rawValue": "100",
+    "value": 200,
+    "rawValue": "200",
     "note": "—",
     "demand": null
   },
@@ -102,8 +102,8 @@ window.GPO_ITEMS = [
     "id": 12,
     "name": "Magu",
     "category": "Fruits",
-    "value": 200,
-    "rawValue": "200",
+    "value": 250,
+    "rawValue": "250",
     "note": "—",
     "demand": null
   },
@@ -111,8 +111,8 @@ window.GPO_ITEMS = [
     "id": 13,
     "name": "Gold",
     "category": "Fruits",
-    "value": 50,
-    "rawValue": "50",
+    "value": 100,
+    "rawValue": "100",
     "note": "—",
     "demand": null
   },
@@ -120,8 +120,8 @@ window.GPO_ITEMS = [
     "id": 14,
     "name": "Smoke",
     "category": "Fruits",
-    "value": 50,
-    "rawValue": "50",
+    "value": 100,
+    "rawValue": "100",
     "note": "—",
     "demand": null
   },
@@ -138,8 +138,8 @@ window.GPO_ITEMS = [
     "id": 16,
     "name": "Biscuit",
     "category": "Fruits",
-    "value": 500,
-    "rawValue": "500",
+    "value": 200,
+    "rawValue": "200",
     "note": "—",
     "demand": null
   },
@@ -219,8 +219,8 @@ window.GPO_ITEMS = [
     "id": 25,
     "name": "Leopard",
     "category": "Fruits",
-    "value": 11500,
-    "rawValue": "11,500",
+    "value": 8500,
+    "rawValue": "8,500",
     "note": "—",
     "demand": null
   },
@@ -255,8 +255,8 @@ window.GPO_ITEMS = [
     "id": 29,
     "name": "Legendary Chest (LChest)",
     "category": "Gamepass / paid items / ASE skins / utility / boats",
-    "value": 600,
-    "rawValue": "600",
+    "value": 650,
+    "rawValue": "650",
     "note": "—",
     "demand": null
   },
@@ -392,7 +392,7 @@ window.GPO_ITEMS = [
     "category": "Gamepass / paid items / ASE skins / utility / boats",
     "value": 300,
     "rawValue": "300",
-    "note": "—",
+    "note": "Yeni videoda sayısal değer belirtilmiyor; önceki 300 değeri korunmuştur. Birkaç düşük seviye legendary fruit.",
     "demand": null
   },
   {
@@ -442,11 +442,11 @@ window.GPO_ITEMS = [
   },
   {
     "id": 50,
-    "name": "Thunder Cloud / Raid Cloud",
+    "name": "Thunder Club / Kaido Club",
     "category": "Gamepass / paid items / ASE skins / utility / boats",
-    "value": 7000,
-    "rawValue": "7,000",
-    "note": "Slaytta “thunder club / raid club” yazıyor",
+    "value": 6700,
+    "rawValue": "6,700",
+    "note": "Düşme oranı artışı nedeniyle 6,700; SOS / Mythical Chest altında.",
     "demand": null
   },
   {
@@ -615,8 +615,8 @@ window.GPO_ITEMS = [
     "id": 69,
     "name": "Yoru",
     "category": "Weapons and general drops",
-    "value": 8500,
-    "rawValue": "8,500",
+    "value": 8000,
+    "rawValue": "8,000",
     "note": "—",
     "demand": null
   },
@@ -624,8 +624,8 @@ window.GPO_ITEMS = [
     "id": 70,
     "name": "Kikoku",
     "category": "Weapons and general drops",
-    "value": 6500,
-    "rawValue": "6,500",
+    "value": 6000,
+    "rawValue": "6,000",
     "note": "—",
     "demand": null
   },
@@ -1011,9 +1011,9 @@ window.GPO_ITEMS = [
     "id": 113,
     "name": "Fruit-crafted rod — name not shown",
     "category": "Boss / Kraken / Sea Beast / fishing",
-    "value": 11000,
-    "rawValue": "11,000",
-    "note": "Under 2 MC",
+    "value": 12000,
+    "rawValue": "12,000",
+    "note": "Videoda adı gösterilmiyor. 2 Mythical Chest değerinden 2,000 düşük.",
     "demand": null
   },
   {
@@ -1218,8 +1218,8 @@ window.GPO_ITEMS = [
     "id": 136,
     "name": "Nightfall Shroud",
     "category": "Halloween",
-    "value": 7000,
-    "rawValue": "7,000 average",
+    "value": 8000,
+    "rawValue": "8,000 average",
     "note": "—",
     "demand": null
   },
@@ -1290,8 +1290,8 @@ window.GPO_ITEMS = [
     "id": 144,
     "name": "Virtuous Wings",
     "category": "Valentine's",
-    "value": 2000,
-    "rawValue": "2,000",
+    "value": 3000,
+    "rawValue": "3,000",
     "note": "—",
     "demand": null
   },
@@ -1479,8 +1479,8 @@ window.GPO_ITEMS = [
     "id": 165,
     "name": "Hopiyo",
     "category": "Easter / gift items",
-    "value": 4500,
-    "rawValue": "4,500",
+    "value": 5500,
+    "rawValue": "5,500",
     "note": "—",
     "demand": null
   },
@@ -1569,8 +1569,8 @@ window.GPO_ITEMS = [
     "id": 175,
     "name": "Mega Pow",
     "category": "Easter / gift items",
-    "value": 7000,
-    "rawValue": "7,000",
+    "value": 8500,
+    "rawValue": "8,500",
     "note": "—",
     "demand": null
   },
@@ -1767,8 +1767,8 @@ window.GPO_ITEMS = [
     "id": 197,
     "name": "Hoverpod",
     "category": "Christmas / anniversary / recent items",
-    "value": 5500,
-    "rawValue": "5,500",
+    "value": 4000,
+    "rawValue": "4,000",
     "note": "—",
     "demand": null
   },
@@ -1785,8 +1785,8 @@ window.GPO_ITEMS = [
     "id": 199,
     "name": "Black/gold winged accessory — name not shown",
     "category": "Christmas / anniversary / recent items",
-    "value": 80000,
-    "rawValue": "80,000",
+    "value": 60000,
+    "rawValue": "60,000",
     "note": "—",
     "demand": null
   },
@@ -1902,8 +1902,8 @@ window.GPO_ITEMS = [
     "id": 212,
     "name": "Prestige Inferno Rocket Blade (PIRB)",
     "category": "Christmas / anniversary / recent items",
-    "value": 525000,
-    "rawValue": "525,000 estimated",
+    "value": 480000,
+    "rawValue": "480,000 estimated",
     "note": "Demand 6/10",
     "demand": 6
   },
@@ -1911,8 +1911,8 @@ window.GPO_ITEMS = [
     "id": 213,
     "name": "Prestige Firework Lancer (PFL)",
     "category": "Christmas / anniversary / recent items",
-    "value": 620000,
-    "rawValue": "620,000 estimated",
+    "value": 600000,
+    "rawValue": "600,000 estimated",
     "note": "Demand 7/10",
     "demand": 7
   },
@@ -1968,6 +1968,15 @@ window.GPO_ITEMS = [
     "value": 6000,
     "rawValue": "6,000",
     "note": "—",
+    "demand": null
+  },
+  {
+    "id": 220,
+    "name": "Gift Crown",
+    "category": "Easter / gift items",
+    "value": 4000,
+    "rawValue": "4,000",
+    "note": "Armor ve Helmet ayrı kalemlerdir; videoda Gift Crown için 4k belirtiliyor.",
     "demand": null
   }
 ];
